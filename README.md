@@ -1,4 +1,5 @@
 # image_store-_in_mysqlserver
-## the image are store in the format of: "public/images/upload_images/"
+## create a folder : "public/images/upload_images/"
+### to store the upload image in frontend
 ### Run : localhost:3000
 
