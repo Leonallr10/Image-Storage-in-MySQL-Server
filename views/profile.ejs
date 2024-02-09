@@ -1,0 +1,53 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>User Profile</title>
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css"/>
+    <script src="https://code.jquery.com/jquery-2.2.0.min.js"></script>
+</head>
+<body>
+    <div class="row">
+        <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 col-xs-offset-0 col-sm-offset-0 col-md-offset-3 col-lg-offset-3 toppad" style="padding-top:30px">
+            <% if (message.length > 0) { %>
+                <div class="alert alert-danger col-sm-12" ><%= message %></div>
+            <% } else { %>
+                <div class="panel panel-info">
+                    <div class="panel-heading">
+                        <h3 class="panel-title"><%=data[0].main_heading%></h3>
+                    </div>
+                    <div class="panel-body">
+                        <div class="row">
+                            <div class="col-md-3 col-lg-3 " align="center">
+                                <img alt="User Pic1" src="http://localhost:8080/images/upload_images/<%=data[0].image1%>" class="img-circle img-responsive">
+                            </div>
+                            <% if (data[0].image2) { %>
+                                <div class="col-md-3 col-lg-3 " align="center">
+                                    <img alt="User Pic2" src="http://localhost:8080/images/upload_images/<%=data[0].image2%>" class="img-circle img-responsive">
+                                </div>
+                            <% } %>
+                        </div>
+                        <div class=" col-md-9 col-lg-9 ">
+                            <table class="table table-user-information">
+                                <tbody>
+                                    <tr>
+                                        <td>Main Heading:</td>
+                                        <td><%=data[0].main_heading%></td>
+                                    </tr>
+                                    <tr>
+                                        <td>Sub Heading:</td>
+                                        <td><%=data[0].sub_heading%></td>
+                                    </tr>
+                                    <tr>
+                                        <td>Content:</td>
+                                        <td><%=data[0].content%></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            <% } %>
+        </div>
+    </div>
+</body>
+</html>
