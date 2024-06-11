@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Smartphone Upload</title>
+    <style>
+        /* Your CSS styles here */
+    </style>
+</head>
+<body>
+    <h2>Upload Smartphone Information</h2>
+    <form id="smartphoneForm">
+        <select id="product" required>
+            <option value="smartphones">Smartphones</option>
+            <option value="laptops">Laptops</option>
+            <option value="accessories">Accessories</option>
+        </select><br>
+                <input type="text" id="pdtName" placeholder="Product Name" required><br>
+        <input type="text" id="currentPrice" placeholder="Current Price" required><br>
+        <input type="text" id="initialPrice" placeholder="Initial Price" required><br>
+        <input type="number" id="storageCapacity" placeholder="Storage Capacity" required><br>
+        <input type="number" id="ram" placeholder="RAM" required><br>
+        <input type="text" id="displayDescription" placeholder="Display Description" required><br>
+        <input type="text" id="resolution" placeholder="Resolution" required><br>
+        <input type="text" id="refreshRate" placeholder="Refresh Rate" required><br>
+        <input type="text" id="cameraSetup" placeholder="Camera Setup" required><br>
+        <input type="text" id="processor" placeholder="Processor" required><br>
+        <input type="text" id="batteryLife" placeholder="Battery Life" required><br>
+        <input type="text" id="operatingSystem" placeholder="Operating System" required><br>
+        <input type="text" id="biometricSecurity" placeholder="Biometric Security" required><br>
+        <input type="text" id="waterResistance" placeholder="Water Resistance" required><br>
+        <input type="text" id="fastChargingSupport" placeholder="Fast Charging Support" required><br>
+        <input type="text" id="wirelessChargingSupport" placeholder="Wireless Charging Support" required><br>
+        <input type="text" id="connectivityOptions" placeholder="Connectivity Options" required><br>
+        <input type="text" id="colorOptions" placeholder="Color Options" required><br>
+        <input type="text" id="dimensions" placeholder="Dimensions" required><br>
+        <input type="file" id="image" accept="image/*" required><br>
+        <button type="submit">Submit</button>
+    </form>
+
+    <script>
+        document.getElementById('smartphoneForm').addEventListener('submit', async function(event) {
+            event.preventDefault();
+
+            const formData = new FormData();
+            formData.append('product', document.getElementById('product').value);
+            formData.append('pdt_name', document.getElementById('pdtName').value);
+            formData.append('current_price', document.getElementById('currentPrice').value);
+            formData.append('initial_price', document.getElementById('initialPrice').value);
+            formData.append('storage_capacity', document.getElementById('storageCapacity').value);
+            formData.append('ram', document.getElementById('ram').value);
+            formData.append('display_description', document.getElementById('displayDescription').value);
+            formData.append('resolution', document.getElementById('resolution').value);
+            formData.append('refresh_rate', document.getElementById('refreshRate').value);
+            formData.append('camera_setup', document.getElementById('cameraSetup').value);
+            formData.append('processor', document.getElementById('processor').value);
+            formData.append('battery_life', document.getElementById('batteryLife').value);
+            formData.append('operating_system', document.getElementById('operatingSystem').value);
+            formData.append('biometric_security', document.getElementById('biometricSecurity').value);
+            formData.append('water_resistance', document.getElementById('waterResistance').value);
+            formData.append('fast_charging_support', document.getElementById('fastChargingSupport').value);
+            formData.append('wireless_charging_support', document.getElementById('wirelessChargingSupport').value);
+            formData.append('connectivity_options', document.getElementById('connectivityOptions').value);
+            formData.append('color_options', document.getElementById('colorOptions').value);
+            formData.append('dimensions', document.getElementById('dimensions').value);
+            formData.append('image', document.getElementById('image').files[0]);
+
+            try {
+                const response = await fetch('http://localhost:3000/api/insert_smartphone', {
+                    method: 'POST',
+                    body: formData
+                });
+                const data = await response.json();
+                console.log(data);
+                alert('Data sent successfully!');
+
+                // Redirect to another page after successful submission
+// Redirect to another page after successful submission
+                window.location.href = 'index.html';
+            } catch (error) {
+                console.error('Error:', error);
+                alert('Failed to send data!');
+            }
+        });
+        
+    </script>
+</body>
+</html>
